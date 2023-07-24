@@ -1,0 +1,32 @@
+set wildmenu
+
+set number
+set numberwidth=3
+"set foldcolumn=1
+
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+
+set showmatch
+
+set scrolloff=8
+
+" command bar
+set ruler
+set showcmd
+set laststatus=2
+
+function! _is_paste()
+  if &paste
+    return 'P'
+  endif
+  return ' '
+endfunction
+
+function! _statusline()
+  return '%{_is_paste()} %-18.18(%F%m%r%h%) %18.18(pwd:%{getcwd()}%) %=%a  %l,%c  -- ;)  '
+endfunction
+
+set statusline=%!_statusline()
