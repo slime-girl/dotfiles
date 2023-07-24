@@ -5,8 +5,7 @@ EDITOR=vim
 ##
 # ZSH OPTIONS
 #   `man zshoptions`
-
-setopt HIST_SAVE_NO_DUPS
+setopt HIST_IGNORE_DUPS
 setopt HIST_VERIFY
 
 setopt NO_LISTBEEP
@@ -14,11 +13,10 @@ setopt LIST_PACKED
 
 setopt RM_STAR_WAIT
 
-# setopt KSH_ARRAYS
-
 ##
 # ALIASES
-[[ -f ~/.shared_aliases ]] && source ~/.shared_aliases
+[[ -f ~/.aliases/shared_aliases ]] && source ~/.aliases/shared_aliases
+[[ -f ~/.aliases/private ]] && source ~/.aliases/private
 
 ##
 # PROMPT
@@ -26,22 +24,27 @@ source ~/.zsh/prompt.zsh
 
 ##
 # FUNCTIONS
-fpath=(~/.zfuncs $fpath)
-
-# autoload the nvm, rbenv, etc stuff
+fpath=(~/.zsh/autoload $fpath)
 
 ##
 # EXTERNALS
+__installed () {
+  command -v 2>&1 1>/dev/null $@
+}
 
-if [[ -e /Applications/love.app/Contents/MacOS/love ]]; then
-    alias love='/Applications/love.app/Contents/MacOS/love'
+if __installed brew; then
+  HOMEBREW_NO_ANALYTICS=1
 fi
 
-# eval $(thefuck --alias)
-# eval "$(rbenv init - zsh)"
+__installed thefuck && eval $(thefuck --alias)
+__installed rbenv && eval "$(rbenv init - zsh)"
 
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-# [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[[ -d ~/.docker/bin ]] && path+=(~/.docker/bin)
 
-# path+=(~"/.docker/bin")
+if [[ -f "/usr/local/opt/nvm/nvm.sh" ]]; then
+  NVM_DIR="$HOME/.nvm"
+  source "/usr/local/opt/nvm/nvm.sh"
+fi
+
+##
+# AUTO-ADDED (evil)

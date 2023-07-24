@@ -1,0 +1,25 @@
+"*":
+  "autocomplete-plus":
+    confirmCompletion: "tab always, enter when suggestion explicitly selected"
+    moveToCancel: true
+  core:
+    disabledPackages: [
+      "exception-reporting"
+      "github"
+      "open-on-github"
+    ]
+  editor:
+    scrollPastEnd: true
+    showIndentGuide: true
+  "find-and-replace":
+    projectSearchResultsPaneSplitDirection: "right"
+  "fuzzy-finder":
+    preserveLastSearch: true
+    searchAllPanes: true
+  "status-bar": {}
+  welcome:
+    showOnStartup: false
+  "wrap-guide":
+    columns: [
+      80
+    ]
