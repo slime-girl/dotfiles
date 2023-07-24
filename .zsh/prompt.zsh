@@ -12,7 +12,8 @@ p_set_random_fruit () {
 precmd_functions=(p_set_random_fruit)
 
 () {
-  local name="%(?.%F{green}.%F{red})diane%f"
-  PS1=" $name %v %2~ %# "
+  local errmark="%(?. .%F{red}*%f)"
+  local name="%F{magenta}diane%f"
+  PS1="$errmark$name %v %2~ %# "
   RPS1="%(?..%F{red}[%?]%f) %*"
 }

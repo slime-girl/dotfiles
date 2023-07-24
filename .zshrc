@@ -18,14 +18,7 @@ setopt RM_STAR_WAIT
 
 ##
 # ALIASES
-alias ls='ls -F --color=auto'
-
-alias l='ls'
-alias la='ls -A'
-alias ll='ls -ahl'
-
-alias config='$EDITOR + ~/.zshrc && source ~/.zshrc'
-alias dotfiles="git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
+[[ -f ~/.shared_aliases ]] && source ~/.shared_aliases
 
 ##
 # PROMPT
