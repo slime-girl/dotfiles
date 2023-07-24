@@ -1,0 +1,6 @@
+/.aws/config
+/.aws/credentials
+
+/.dotfiles.git
+/.ssh/*
+/.aliases/private
