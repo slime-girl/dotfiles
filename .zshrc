@@ -15,7 +15,7 @@ setopt RM_STAR_WAIT
 
 ##
 # ALIASES
-[[ -f ~/.aliases/shared_aliases ]] && source ~/.aliases/shared_aliases
+[[ -f ~/.aliases/shared ]] && source ~/.aliases/shared
 [[ -f ~/.aliases/private ]] && source ~/.aliases/private
 
 ##
@@ -41,10 +41,15 @@ __installed rbenv && eval "$(rbenv init - zsh)"
 
 [[ -d ~/.docker/bin ]] && path+=(~/.docker/bin)
 
-if [[ -f "/usr/local/opt/nvm/nvm.sh" ]]; then
-  NVM_DIR="$HOME/.nvm"
-  source "/usr/local/opt/nvm/nvm.sh"
-fi
+__init_nvm() {
+  unalias nvm
+  if [[ -f "/usr/local/opt/nvm/nvm.sh" ]]; then
+    NVM_DIR="$HOME/.nvm"
+    source "/usr/local/opt/nvm/nvm.sh"
+  fi
+  nvm $@
+}
+alias nvm='__init_nvm'
 
 ##
 # AUTO-ADDED (evil)

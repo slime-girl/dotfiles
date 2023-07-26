@@ -4,4 +4,4 @@ EDITOR=vim
 
 ##
 # ALIASES
-[[ -f ~/.shared_aliases ]] && source ~/.shared_aliases
+[[ -f ~/.shared_aliases ]] && source ~/.shared
