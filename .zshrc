@@ -18,6 +18,8 @@ setopt RM_STAR_WAIT
 [[ -f ~/.aliases/shared ]] && source ~/.aliases/shared
 [[ -f ~/.aliases/private ]] && source ~/.aliases/private
 
+alias config='$EDITOR + ~/.zshrc && source ~/.zshrc'
+
 ##
 # PROMPT
 source ~/.zsh/prompt.zsh
